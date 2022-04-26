@@ -1,0 +1,23 @@
+.navbar {
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.navbar-avatar {
+    max-width: 40px;
+    max-height: 40px;
+    -o-object-position: center;
+    object-position: center;
+    -o-object-fit: cover;
+    object-fit: cover;
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    vertical-align: middle;
+    border-style: none;
+}
+  
