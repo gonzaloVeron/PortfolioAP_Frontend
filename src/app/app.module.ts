@@ -8,7 +8,10 @@ import { ExperienceComponent } from './components/experiences/experience/experie
 import { ExperiencesComponent } from './components/experiences/experiences.component';
 import { MainComponent } from './components/main/main.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { SkillCircleComponent } from './components/skill-circle/skill-circle.component';
 import { UserAvatarComponent } from './components/user-avatar/user-avatar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [	
@@ -18,11 +21,14 @@ import { UserAvatarComponent } from './components/user-avatar/user-avatar.compon
     UserAvatarComponent,
     AboutMeComponent,
     ExperiencesComponent,
-    ExperienceComponent
+    ExperienceComponent,
+    SkillCircleComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    MatProgressSpinnerModule,
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

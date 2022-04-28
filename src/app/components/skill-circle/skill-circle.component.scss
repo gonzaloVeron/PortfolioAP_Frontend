@@ -1,0 +1,19 @@
+
+
+.skill{
+    position: relative;
+
+    .skill-position{
+        position: absolute;
+        top: 42px;
+        right: 151px;
+        
+        .skill-value{
+            font-size: 35px;
+        }
+    }
+
+    .skill-text{
+        font-size: large;
+    }
+}

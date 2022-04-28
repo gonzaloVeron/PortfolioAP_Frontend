@@ -5,6 +5,7 @@ import { ExperienceComponent } from './components/experiences/experience/experie
 import { ExperiencesComponent } from './components/experiences/experiences.component';
 import { MainComponent } from './components/main/main.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { SkillCircleComponent } from './components/skill-circle/skill-circle.component';
 import { UserAvatarComponent } from './components/user-avatar/user-avatar.component';
 
 const routes: Routes = [
@@ -15,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: "app",
-    component: ExperiencesComponent
+    component: SkillCircleComponent
   },
 ];
 
