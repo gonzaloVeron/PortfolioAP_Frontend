@@ -6,7 +6,7 @@
     .skill-position{
         position: absolute;
         top: 42px;
-        right: 151px;
+        right: 24px;
         
         .skill-value{
             font-size: 35px;
@@ -16,4 +16,9 @@
     .skill-text{
         font-size: large;
     }
+
+}
+
+.skill ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #54cba2;
 }

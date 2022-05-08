@@ -12,6 +12,9 @@ import { SkillCircleComponent } from './components/skill-circle/skill-circle.com
 import { UserAvatarComponent } from './components/user-avatar/user-avatar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { HardAndSoftSkillsComponent } from './components/hard-and-soft-skills/hard-and-soft-skills.component';
+import { ProjectsComponent } from './components/projects/projects.component';
+import { ProjectComponent } from './components/projects/project/project.component';
 
 @NgModule({
   declarations: [	
@@ -22,7 +25,10 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     AboutMeComponent,
     ExperiencesComponent,
     ExperienceComponent,
-    SkillCircleComponent
+    SkillCircleComponent,
+    HardAndSoftSkillsComponent,
+    ProjectsComponent,
+    ProjectComponent
   ],
   imports: [
     BrowserModule,
