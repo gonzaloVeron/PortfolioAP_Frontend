@@ -1,12 +1,12 @@
 <div class="skill">
-    <mat-progress-spinner mode="determinate" [diameter]="140" [value]="70" style="position: relative">
+    <mat-progress-spinner mode="determinate" [diameter]="140" [value]="skill.level" style="position: relative">
     </mat-progress-spinner>
-    <mat-progress-spinner  mode="determinate" [diameter]="140" [value]="100" style="position: absolute; top: 0; opacity: 0.3;">
+    <mat-progress-spinner mode="determinate" [diameter]="140" [value]="100" style="position: absolute; top: 0; opacity: 0.3;">
     </mat-progress-spinner>
     <div class="skill-position">
-        <strong class="skill-value">{{"70%"}}</strong>
+        <strong class="skill-value">{{ skill.level + "" + "%" }}</strong>
     </div>
-    <strong class="skill-text">{{"Skill"}}</strong>
+    <strong class="skill-text">{{ skill.name }}</strong>
 </div>
 
 

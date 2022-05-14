@@ -1,2 +1,2 @@
-<h3 class="mb-3"> Experiencias laborales </h3>
-<app-experience *ngFor="let exp of experiences"></app-experience>
+<h3 class="mb-3"> {{ title }} </h3>
+<app-experience *ngFor="let exp of experiences" [experience]="exp"></app-experience>
