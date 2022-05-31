@@ -1,0 +1,9 @@
+.separated{
+    width: 9%;
+}
+
+@media (max-width: 576px) {
+    .separated {
+        width: 28%;
+    }
+}

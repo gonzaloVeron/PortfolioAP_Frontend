@@ -1,0 +1,27 @@
+<mat-dialog-content class="mat-typography" style="min-width: 280px">
+  <h1 class="text-center"> Datos de educación </h1>
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <img class="image" [src]="imgSelected">
+    <input
+      type="file"
+      id="fileEdu"
+      (change)="addImage($event)"
+      value="Añadir Foto"
+    />
+    <div class="d-flex justify-content-center align-items-center mt-2 mb-2">
+      <label class="btn btn-primary d-flex justify-content-around align-items-center" for="fileEdu" style="cursor: pointer;">
+        <span> Subir imagen </span>
+        <i class="fas fa-cloud-arrow-up" style="margin-left: 5px"></i>
+      </label>
+    </div>
+  </div>
+  <div [formGroup]="updateEducationForm">
+    <input type="text" [ngClass]="['form-control', 'mb-2', controlField('title')]" placeholder="Título" formControlName="title">
+    <input type="text" [ngClass]="['form-control', 'mb-2', controlField('institution')]" placeholder="Nombre de la institución" formControlName="institution">
+    <input type="text" [ngClass]="['form-control', 'mb-2', controlField('career')]" placeholder="Carrera" formControlName="career">
+    <input type="number" [ngClass]="['form-control', 'mb-2', controlField('average')]" placeholder="Promedio" formControlName="average">
+    <input type="number" [ngClass]="['form-control', 'mb-2', controlField('start_year')]" placeholder="Año de inicio" formControlName="start_year">
+    <input type="number" [ngClass]="['form-control', 'mb-2', controlField('end_year')]" placeholder="Año de finalización" formControlName="end_year">
+  </div>
+  <button class="btn btn-secondary w-100 mb-1" (click)="updateExperience()">Modificar</button>
+</mat-dialog-content>

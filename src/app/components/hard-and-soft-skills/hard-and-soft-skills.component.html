@@ -1,6 +1,9 @@
-<h3>Habilidades duras y blandas</h3>
+<div class="d-flex">
+  <h3 class="mb-3"> {{ "Habilidades duras y blandas" }} </h3>
+  <app-icon-button [icon]="'fa-plus'" style="margin-top: 0.6%; margin-left: 0.6%" (click)="openDialog()"></app-icon-button>
+</div>
 <div class="row mt-3">
   <div *ngFor="let skill of skills" class="col-sm-4 mt-2 d-flex justify-content-center align-items-center text-center">
-    <app-skill-circle [skill]="skill"></app-skill-circle>
+    <app-skill-circle (delete)="deleteSkill($event)" [skill]="skill"></app-skill-circle>
   </div>
 </div>

@@ -1,0 +1,5 @@
+<div class="d-flex">
+    <h3 class="mb-3"> {{ title }} </h3>
+    <app-icon-button [icon]="'fa-plus'" style="margin-top: 0.6%; margin-left: 0.6%" (click)="openDialog()"></app-icon-button>
+</div>
+<app-education *ngFor="let edu of educations" (delete)="deleteEducation($event)" [education]="edu"></app-education>

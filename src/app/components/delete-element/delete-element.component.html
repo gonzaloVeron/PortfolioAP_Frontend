@@ -1,0 +1,7 @@
+<mat-dialog-content class="mat-typography" style="min-width: 280px">
+  <h1 class="text-center"> {{ "¿ Desea eliminar " + title + " ?" }} </h1>
+  <div class="d-flex w-100 justify-content-around align-items-center">
+    <button class="btn btn-danger w-50 mb-1" (click)="deleteElem()">Eliminar</button>
+    <button class="btn btn-primary w-50 mb-1" (click)="cancel()">Cancelar</button>
+  </div>
+</mat-dialog-content>

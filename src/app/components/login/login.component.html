@@ -1,0 +1,9 @@
+<mat-dialog-content class="mat-typography" style="min-width: 280px">
+  <h1 class="text-center"> Mi portfolio </h1>
+  <h3 class="text-center"> Bienvenido </h3>
+  <div [formGroup]="loginForm">
+    <input type="text" [ngClass]="['form-control', 'mb-2', controlField('email')]" placeholder="Email" formControlName="email">
+    <input type="password" [ngClass]="['form-control', 'mb-2', controlField('password')]" placeholder="Password" formControlName="password">
+  </div>
+  <button class="btn btn-secondary w-100 mb-1" (click)="login()">LogIn</button>
+</mat-dialog-content>

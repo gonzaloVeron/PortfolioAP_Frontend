@@ -1,0 +1,9 @@
+<mat-dialog-content class="mat-typography" style="min-width: 280px">
+  <h1 class="text-center"> Proyecto </h1>
+  <div [formGroup]="updateProjectForm">
+    <input type="text" [ngClass]="['form-control', 'mb-2', controlField('title')]" placeholder="Título" formControlName="title">
+    <input type="text" [ngClass]="['form-control', 'mb-2', controlField('description')]" placeholder="Descripción" formControlName="description">
+    <input type="text" [ngClass]="['form-control', 'mb-2', controlField('url')]" placeholder="URL de evidencia" formControlName="url">
+  </div>
+  <button class="btn btn-secondary w-100 mb-1" (click)="updateProject()">Modificar</button>
+</mat-dialog-content>

@@ -1,2 +1,5 @@
-<h3 class="mb-3"> {{ title }} </h3>
-<app-experience *ngFor="let exp of experiences" [experience]="exp"></app-experience>
+<div class="d-flex">
+    <h3 class="mb-3"> {{ title }} </h3>
+    <app-icon-button [icon]="'fa-plus'" style="margin-top: 0.6%; margin-left: 0.6%" (click)="openDialog()"></app-icon-button>
+</div>
+<app-experience *ngFor="let exp of experiences" (delete)="deleteExperience($event)" [experience]="exp"></app-experience>

@@ -1,18 +1,18 @@
 <app-navbar></app-navbar>
 <div class="main container">
-  <img class="w-100" src="https://i.imgur.com/aCqrQEi.jpeg">
+  <app-background-img></app-background-img>
   <div class="container-fluid">
     <div class="row" style="position: relative;">
       <div class="col-sm-3">
         <app-user-avatar class="d-flex justify-content-center align-items-center" style="position: relative; top: -53px"></app-user-avatar>
       </div>
       <div class="col-sm-9">
-        <app-about-me [title]="'Acerca de...'" [content]="aboutMeContent"></app-about-me>
+        <app-about-me></app-about-me>
       </div>
     </div>
   </div>
-  <app-experiences [title]="'Experiencias laborales'"></app-experiences>
-  <app-experiences [title]="'Educación'"></app-experiences>
+  <app-experiences></app-experiences>
+  <app-educations></app-educations>
   <app-hard-and-soft-skills></app-hard-and-soft-skills>
   <app-projects></app-projects>
 </div>

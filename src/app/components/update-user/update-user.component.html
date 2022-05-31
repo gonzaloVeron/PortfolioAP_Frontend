@@ -1,0 +1,10 @@
+<mat-dialog-content class="mat-typography" style="min-width: 280px">
+  <h1 class="text-center"> Datos de usuario </h1>
+  <!-- <h3 class="text-center"> Bienvenido </h3> -->
+  <div [formGroup]="updateUserForm">
+    <input type="text" [ngClass]="['form-control', 'mb-2', controlField('name')]" placeholder="Nombre" formControlName="name">
+    <input type="text" [ngClass]="['form-control', 'mb-2', controlField('surname')]" placeholder="Apellido" formControlName="surname">
+    <input type="text" [ngClass]="['form-control', 'mb-2', controlField('employment')]" placeholder="Empleo" formControlName="employment">
+  </div>
+  <button class="btn btn-secondary w-100 mb-1" (click)="updateUser()">Modificar</button>
+</mat-dialog-content>

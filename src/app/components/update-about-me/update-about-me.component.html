@@ -1,0 +1,7 @@
+<mat-dialog-content class="mat-typography" style="min-width: 280px">
+  <h1 class="text-center"> Datos de usuario </h1>
+  <div [formGroup]="updateAboutMeForm">
+    <textarea [ngClass]="['form-control', 'mb-2', controlField('description')]" placeholder="Descripción" rows="3" formControlName="description"></textarea>
+  </div>
+  <button class="btn btn-secondary w-100 mb-1" (click)="updateUser()">Modificar</button>
+</mat-dialog-content>

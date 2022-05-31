@@ -1,0 +1,8 @@
+<mat-dialog-content class="mat-typography" style="min-width: 280px">
+  <h1 class="text-center"> Habilidad blanda/dura </h1>
+  <div [formGroup]="updateSkillForm">
+    <input type="text" [ngClass]="['form-control', 'mb-2', controlField('name')]" placeholder="Nombre" formControlName="name">
+    <input type="text" [ngClass]="['form-control', 'mb-2', controlField('level')]" placeholder="Nivel de habilidad" formControlName="level">
+  </div>
+  <button class="btn btn-secondary w-100 mb-1" (click)="updateSkill()">Modificar</button>
+</mat-dialog-content>

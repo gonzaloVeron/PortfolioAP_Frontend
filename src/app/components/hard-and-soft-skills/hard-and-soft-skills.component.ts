@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Skill } from 'src/app/models/Skill';
+import { SkillService } from 'src/app/services/skill.service';
+import { UpdateSkillComponent } from '../update-skill/update-skill.component';
 
 @Component({
   selector: 'app-hard-and-soft-skills',
@@ -8,11 +11,29 @@ import { Skill } from 'src/app/models/Skill';
 })
 export class HardAndSoftSkillsComponent implements OnInit {
 
-  skills: Array<Skill> = [new Skill(17, "Skill 1"), new Skill(39, "Skill 2"), new Skill(81, "Skill 3"), new Skill(56, "Skill 4"), new Skill(33, "Skill 5"), new Skill(5, "Skill 6")]
+  skills: Array<Skill>;
 
-  constructor() { }
+  constructor(private skillService: SkillService, private dialog: MatDialog) { }
 
   ngOnInit() {
+    this.skillService.getAll().subscribe((resp: Array<Skill>) => {
+      this.skills = resp;
+    })
+  }
+
+  openDialog(){
+    const dialogRef = this.dialog.open(UpdateSkillComponent);
+
+    dialogRef.afterClosed().subscribe((skill: Skill) => {
+      if(skill){
+        this.skills.push(skill);
+      }
+    });
+  }
+
+  deleteSkill(event){
+    let index = this.skills.indexOf(this.skills.find(elem => elem.id === event));
+    this.skills.splice(index, 1);
   }
 
 }

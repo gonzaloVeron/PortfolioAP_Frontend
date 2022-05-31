@@ -1,0 +1,27 @@
+<mat-dialog-content class="mat-typography" style="min-width: 280px">
+  <h1 class="text-center"> Datos de experiencia de trabajo </h1>
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <img [src]="imgSelected" class="image">
+    <input
+      type="file"
+      id="filee"
+      (change)="addImage($event)"
+      value="Añadir Foto"
+    />
+    <div class="d-flex justify-content-center align-items-center mt-2 mb-2">
+      <label class="btn btn-primary d-flex justify-content-around align-items-center" for="filee" style="cursor: pointer;">
+        <span> Subir imagen </span>
+        <i class="fas fa-cloud-arrow-up" style="margin-left: 5px"></i>
+      </label>
+    </div>
+  </div>
+  <div [formGroup]="updateExperienceForm">
+    <input type="text" [ngClass]="['form-control', 'mb-2', controlField('title')]" placeholder="Título" formControlName="title">
+    <input type="text" [ngClass]="['form-control', 'mb-2', controlField('company_name')]" placeholder="Nombre de la empresa" formControlName="company_name">
+    <input type="text" [ngClass]="['form-control', 'mb-2', controlField('city')]" placeholder="Ciudad" formControlName="city">
+    <input type="text" [ngClass]="['form-control', 'mb-2', controlField('description')]" placeholder="Descripción" formControlName="description">
+    <input type="date" [ngClass]="['form-control', 'mb-2', controlField('start_date')]" placeholder="b" formControlName="start_date">
+    <input type="date" [ngClass]="['form-control', 'mb-2', controlField('end_date')]" placeholder="a" formControlName="end_date">
+  </div>
+  <button class="btn btn-secondary w-100 mb-1" (click)="updateExperience()">Modificar</button>
+</mat-dialog-content>
