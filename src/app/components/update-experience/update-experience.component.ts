@@ -32,7 +32,7 @@ export class UpdateExperienceComponent implements OnInit {
     this.updateExperienceForm = this.formBuilder.group({
       city: ['', Validators.required],
       company_name: ['', Validators.required],
-      image: ['', Validators.required],
+      image: [''],
       description: ['', Validators.required],
       end_date: ['', Validators.required],
       start_date: ['', Validators.required],

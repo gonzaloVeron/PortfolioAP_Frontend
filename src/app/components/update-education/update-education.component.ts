@@ -33,7 +33,7 @@ export class UpdateEducationComponent implements OnInit {
       average: ['', Validators.required],
       career: ['', Validators.required],
       end_year: ['', Validators.required],
-      image: ['', Validators.required],
+      image: [''],
       institution: ['', Validators.required],
       start_year: ['', Validators.required],
       title: ['', Validators.required]
