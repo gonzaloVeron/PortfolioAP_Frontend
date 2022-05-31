@@ -13,15 +13,19 @@ export class UploadButtonComponent implements OnInit {
 
   @Output() onSetImage: EventEmitter<{imgName: string}> = new EventEmitter();
 
+  loading: boolean = false;
+
   ngOnInit() {
   }
 
   addDoc(event){
+    this.loading = true;
     let file = event.target.files[0];
     const formdata = new FormData();
     formdata.append('image', file);
     this.userService.saveProfilePhoto(formdata).subscribe((resp: ImageNameDTO) => {
         this.onSetImage.emit(resp);
+        this.loading = false;
       }
     );
   }

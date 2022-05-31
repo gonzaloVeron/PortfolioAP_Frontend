@@ -17,6 +17,8 @@ export class BackgroundImgComponent implements OnInit {
 
   @Input() showButtons: boolean = false;
 
+  loading: boolean = false;
+
   constructor(private userService: UserService) { }
 
   ngOnInit() {
@@ -26,11 +28,13 @@ export class BackgroundImgComponent implements OnInit {
   }
 
   addDoc(event){
+    this.loading = true;
     let file = event.target.files[0];
     const formdata = new FormData();
     formdata.append('image', file);
     this.userService.saveBackgroundPhoto(formdata).subscribe((resp: ImageNameDTO) => {
         this.backgroundImg = resp.imgName;
+        this.loading = true;
       }
     );
   }

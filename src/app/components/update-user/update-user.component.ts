@@ -15,6 +15,8 @@ export class UpdateUserComponent implements OnInit {
 
   updateUserForm: FormGroup;
 
+  loading: boolean = false;
+
   constructor(private dialogRef: MatDialogRef<UpdateUserComponent>, private formBuilder: FormBuilder, private userService: UserService) { }
 
   ngOnInit() {
@@ -36,11 +38,11 @@ export class UpdateUserComponent implements OnInit {
     this.updateUserForm.markAllAsTouched();
     let user: UserDTO = User.userUpdate(this.updateUserForm.getRawValue().name, this.updateUserForm.getRawValue().surname, this.updateUserForm.getRawValue().employment, environment.user_id);
     if(this.updateUserForm.valid){
+      this.loading = true;
       this.userService.updateAvatarData(user).subscribe((resp: User) => {
         this.dialogRef.close(user);
-      }, err => {
-        console.error(err);
-      })
+        this.loading = false;
+      });
     }
   }
 
