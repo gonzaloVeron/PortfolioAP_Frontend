@@ -16,6 +16,8 @@ export class DeleteElementComponent implements OnInit {
 
   idToFind: number;
 
+  loading: boolean = false;
+
   constructor(private dialogRef: MatDialogRef<DeleteElementComponent>,
     private experienceService: ExperienceService,
     private educationService: EducationService,

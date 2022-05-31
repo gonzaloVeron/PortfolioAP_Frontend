@@ -14,6 +14,8 @@ export class UpdateProjectComponent implements OnInit {
   updateProjectForm: FormGroup;
 
   buttonTitle: string = "Modificar";
+  
+  loading: boolean = false;
 
   constructor(private dialogRef: MatDialogRef<UpdateProjectComponent>, private formBuilder: FormBuilder, private projectService: ProjectService) { }
 
@@ -50,20 +52,22 @@ export class UpdateProjectComponent implements OnInit {
       this.updateProjectForm.getRawValue().url, 
     );
     if(localStorage.getItem("pro")){
+      this.loading = true;
+      this.buttonTitle = "Modificando";
       if(this.updateProjectForm.valid){
         this.projectService.patchProject(project_id, project).subscribe((resp: Project) => {
           this.dialogRef.close(resp);
-        }, err => {
-          console.error(err);
-        })
+          this.loading = false;
+        });
       }
     }else{
+      this.loading = true;
+      this.buttonTitle = "Agregando";
       if(this.updateProjectForm.valid){
         this.projectService.createProject(project).subscribe((resp: Project) => {
           this.dialogRef.close(resp);
-        }, err => {
-          console.error(err);
-        })
+          this.loading = false;
+        });
       }
     }
   }

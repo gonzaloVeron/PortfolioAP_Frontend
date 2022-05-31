@@ -5,5 +5,13 @@
     <input type="text" [ngClass]="['form-control', 'mb-2', controlField('description')]" placeholder="Descripción" formControlName="description">
     <input type="text" [ngClass]="['form-control', 'mb-2', controlField('url')]" placeholder="URL de evidencia" formControlName="url">
   </div>
-  <button class="btn btn-secondary w-100 mb-1" (click)="updateProject()">{{ buttonTitle }}</button>
+  <button *ngIf="!loading" class="btn btn-secondary w-100 mb-1" (click)="updateProject()">
+    <span> {{ buttonTitle }} </span>
+  </button>
+  <button *ngIf="loading" class="btn btn-secondary w-100 mb-1" disabled>
+    <span> {{ buttonTitle + "..." }} </span>
+    <div class="spinner-grow text-light spinner-grow-sm" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </button>
 </mat-dialog-content>

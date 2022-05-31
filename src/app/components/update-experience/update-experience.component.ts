@@ -22,6 +22,10 @@ export class UpdateExperienceComponent implements OnInit {
 
   buttonTitle: string = "Modificar";
 
+  imgLoading: boolean = false;
+
+  loading: boolean = false;
+
   constructor(private dialogRef: MatDialogRef<UpdateExperienceComponent>, private formBuilder: FormBuilder, private experienceService: ExperienceService, private imageService: ImageService) { }
 
   ngOnInit() {
@@ -69,25 +73,28 @@ export class UpdateExperienceComponent implements OnInit {
       this.updateExperienceForm.getRawValue().title
     );
     if(localStorage.getItem("exp")){
+      this.loading = true;
+      this.buttonTitle = "Modificando";
       if(this.updateExperienceForm.valid){
         this.experienceService.patchExperience(parseInt(localStorage.getItem("exp")), experience).subscribe((resp: Experience) => {
           this.dialogRef.close(resp);
-        }, err => {
-          console.error(err);
-        })
+          this.loading = false;
+        });
       }
     }else{
+      this.loading = true;
+      this.buttonTitle = "Agregando";
       if(this.updateExperienceForm.valid){
         this.experienceService.createExperience(experience).subscribe((resp: Experience) => {
           this.dialogRef.close(resp);
-        }, err => {
-          console.error(err);
-        })
+          this.loading = false;
+        });
       }
     }
   }
 
   addImage(event){
+    this.imgLoading = true;
     let file = event.target.files[0];
     const formdata = new FormData();
     formdata.append('image', file);
@@ -103,6 +110,7 @@ export class UpdateExperienceComponent implements OnInit {
           start_date: this.updateExperienceForm.getRawValue().start_date,
           title: this.updateExperienceForm.getRawValue().title
         });
+        this.imgLoading = false;
       }
     );
   }

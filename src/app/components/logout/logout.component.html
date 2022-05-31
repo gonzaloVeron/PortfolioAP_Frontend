@@ -1,4 +1,12 @@
 <mat-dialog-content class="mat-typography" style="min-width: 280px">
   <h1 class="text-center"> ¿ No desea modificar nada más ? </h1>
-  <button class="btn btn-danger w-100 mb-1" (click)="logout()">Cerrar sesión</button>
+  <button *ngIf="!loading" class="btn btn-danger w-100 mb-1" (click)="logout()">
+    <span> Cerrar sesión </span>
+  </button>
+  <button *ngIf="loading" class="btn btn-danger w-100 mb-1" disabled>
+    <span> Cerrando sesión... </span>
+    <div class="spinner-grow text-light spinner-grow-sm" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </button>
 </mat-dialog-content>

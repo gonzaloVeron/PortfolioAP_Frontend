@@ -3,5 +3,13 @@
   <div [formGroup]="updateAboutMeForm">
     <textarea [ngClass]="['form-control', 'mb-2', controlField('description')]" placeholder="Descripción" rows="3" formControlName="description"></textarea>
   </div>
-  <button class="btn btn-secondary w-100 mb-1" (click)="updateUser()">Modificar</button>
+  <button *ngIf="!loading" class="btn btn-secondary w-100 mb-1" (click)="updateUser()">
+    <span> Modificar </span>
+  </button>
+  <button *ngIf="loading" class="btn btn-secondary w-100 mb-1" disabled>
+    <span> Modificando... </span>
+    <div class="spinner-grow text-light spinner-grow-sm" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </button>
 </mat-dialog-content>

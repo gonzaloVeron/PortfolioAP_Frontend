@@ -17,6 +17,8 @@ export class UpdateSkillComponent implements OnInit {
 
   buttonTitle: string = "Modificar";
 
+  loading: boolean = false;
+
   ngOnInit() {
     this.updateSkillForm = this.formBuilder.group({
       name: ['', Validators.required],
@@ -47,20 +49,22 @@ export class UpdateSkillComponent implements OnInit {
       this.updateSkillForm.getRawValue().name, 
     );
     if(localStorage.getItem("skill")){
+      this.loading = true;
+      this.buttonTitle = "Modificando";
       if(this.updateSkillForm.valid){
         this.skillService.patchSkill(skill_id, skill).subscribe((resp: Skill) => {
           this.dialogRef.close(resp);
-        }, err => {
-          console.error(err);
-        })
+          this.loading = false;
+        });
       }
     }else{
+      this.loading = true;
+      this.buttonTitle = "Agregando";
       if(this.updateSkillForm.valid){
         this.skillService.createSkill(skill).subscribe((resp: Skill) => {
           this.dialogRef.close(resp);
-        }, err => {
-          console.error(err);
-        })
+          this.loading = false;
+        });
       }
     }
   }

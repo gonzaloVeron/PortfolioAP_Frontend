@@ -22,6 +22,10 @@ export class UpdateEducationComponent implements OnInit {
 
   buttonTitle: string = "Modificar";
 
+  loading: boolean = false;
+
+  imgLoading: boolean = false;
+
   constructor(private dialogRef: MatDialogRef<UpdateEducationComponent>, private formBuilder: FormBuilder, private educationService: EducationService, private imageService: ImageService) { }
 
   ngOnInit() {
@@ -57,7 +61,7 @@ export class UpdateEducationComponent implements OnInit {
     return this.updateEducationForm.get(field).touched && this.updateEducationForm.get(field).invalid ? "is-invalid" : (this.updateEducationForm.get(field).touched && this.updateEducationForm.get(field).valid) ? "is-valid" : "";
   }
 
-  updateExperience(){
+  updateEducation(){
     this.updateEducationForm.markAllAsTouched();
     let education: Education = new Education(this.updateEducationForm.getRawValue().average, 
       this.updateEducationForm.getRawValue().career, 
@@ -69,25 +73,28 @@ export class UpdateEducationComponent implements OnInit {
       this.updateEducationForm.getRawValue().title
     );
     if(localStorage.getItem("edu")){
+      this.loading = true;
+      this.buttonTitle = "Modificando";
       if(this.updateEducationForm.valid){
         this.educationService.patchEducation(parseInt(localStorage.getItem("edu")), education).subscribe((resp: Education) => {
           this.dialogRef.close(resp);
-        }, err => {
-          console.error(err);
-        })
+          this.loading = false;
+        });
       }
     }else{
+      this.loading = true;
+      this.buttonTitle = "Agregando";
       if(this.updateEducationForm.valid){
         this.educationService.createEducation(education).subscribe((resp: Education) => {
           this.dialogRef.close(resp);
-        }, err => {
-          console.error(err);
-        })
+          this.loading = false;
+        });
       }
     }
   }
 
   addImage(event){
+    this.imgLoading = true;
     let file = event.target.files[0];
     const formdata = new FormData();
     formdata.append('image', file);
@@ -103,6 +110,7 @@ export class UpdateEducationComponent implements OnInit {
           institution: this.updateEducationForm.getRawValue().institution,
           title: this.updateEducationForm.getRawValue().title
         });
+        this.imgLoading = false;
       }
     );
   }

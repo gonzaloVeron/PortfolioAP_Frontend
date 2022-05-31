@@ -9,9 +9,15 @@
       value="Añadir Foto"
     />
     <div class="d-flex justify-content-center align-items-center mt-2 mb-2">
-      <label class="btn btn-primary d-flex justify-content-around align-items-center" for="filee" style="cursor: pointer;">
+      <label *ngIf="!imgLoading" class="btn btn-primary d-flex justify-content-around align-items-center" for="fileEdu" style="cursor: pointer;">
         <span> Subir imagen </span>
         <i class="fas fa-cloud-arrow-up" style="margin-left: 5px"></i>
+      </label>
+      <label *ngIf="imgLoading" class="btn btn-primary d-flex justify-content-around align-items-center">
+        <span> Subiendo... </span>
+        <div class="spinner-grow text-light spinner-grow-sm" style="margin-left: 5px" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
       </label>
     </div>
   </div>
@@ -23,5 +29,13 @@
     <input type="date" [ngClass]="['form-control', 'mb-2', controlField('start_date')]" placeholder="b" formControlName="start_date">
     <input type="date" [ngClass]="['form-control', 'mb-2', controlField('end_date')]" placeholder="a" formControlName="end_date">
   </div>
-  <button class="btn btn-secondary w-100 mb-1" (click)="updateExperience()">{{ buttonTitle }}</button>
+  <button *ngIf="!loading" class="btn btn-secondary w-100 mb-1" (click)="updateExperience()">
+    <span> {{ buttonTitle }} </span>
+  </button>
+  <button *ngIf="loading" class="btn btn-secondary w-100 mb-1" disabled>
+    <span> {{ buttonTitle + "..." }} </span>
+    <div class="spinner-grow text-light spinner-grow-sm" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </button>
 </mat-dialog-content>
