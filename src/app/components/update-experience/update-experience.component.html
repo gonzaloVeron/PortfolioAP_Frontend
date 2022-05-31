@@ -25,9 +25,9 @@
     <input type="text" [ngClass]="['form-control', 'mb-2', controlField('title')]" placeholder="Título" formControlName="title">
     <input type="text" [ngClass]="['form-control', 'mb-2', controlField('company_name')]" placeholder="Nombre de la empresa" formControlName="company_name">
     <input type="text" [ngClass]="['form-control', 'mb-2', controlField('city')]" placeholder="Ciudad" formControlName="city">
-    <input type="text" [ngClass]="['form-control', 'mb-2', controlField('description')]" placeholder="Descripción" formControlName="description">
     <input type="date" [ngClass]="['form-control', 'mb-2', controlField('start_date')]" placeholder="b" formControlName="start_date">
     <input type="date" [ngClass]="['form-control', 'mb-2', controlField('end_date')]" placeholder="a" formControlName="end_date">
+    <textarea [ngClass]="['form-control', 'mb-2', controlField('description')]" placeholder="Descripción" rows="4" formControlName="description"></textarea>
   </div>
   <button *ngIf="!loading" class="btn btn-secondary w-100 mb-1" (click)="updateExperience()">
     <span> {{ buttonTitle }} </span>
