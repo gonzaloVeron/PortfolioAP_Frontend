@@ -15,6 +15,8 @@ export class MainComponent implements OnInit {
 
   user: User;
 
+  showButtons: boolean = false;
+
   constructor() { }
 
   ngOnInit() {
@@ -23,6 +25,10 @@ export class MainComponent implements OnInit {
 
   setUser(e){
     this.user = e;
+  }
+
+  onShowButtons(event){
+    this.showButtons = event;
   }
 
 }

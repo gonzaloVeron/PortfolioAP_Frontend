@@ -4,7 +4,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Experience } from 'src/app/models/Experience';
 import { ImageNameDTO } from 'src/app/models/ImageNameDTO';
 import { ExperienceService } from 'src/app/services/experience.service';
-import { UserService } from 'src/app/services/user.service';
+import { ImageService } from 'src/app/services/image.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -16,9 +16,13 @@ export class UpdateExperienceComponent implements OnInit {
 
   updateExperienceForm: FormGroup;
 
-  imgSelected: string = "../../../assets/images/no-images.png";
+  imgPath: string = environment.fireImgPath;
 
-  constructor(private dialogRef: MatDialogRef<UpdateExperienceComponent>, private formBuilder: FormBuilder, private experienceService: ExperienceService, private userService: UserService) { }
+  imgSelected: string = "no-images.png";
+
+  buttonTitle: string = "Modificar";
+
+  constructor(private dialogRef: MatDialogRef<UpdateExperienceComponent>, private formBuilder: FormBuilder, private experienceService: ExperienceService, private imageService: ImageService) { }
 
   ngOnInit() {
     this.updateExperienceForm = this.formBuilder.group({
@@ -42,7 +46,10 @@ export class UpdateExperienceComponent implements OnInit {
           start_date: resp.start_date,
           title: resp.title
         });
+        this.imgSelected = resp.image;
       });
+    }else{
+      this.buttonTitle = "Agregar";
     }
   }
   
@@ -64,7 +71,7 @@ export class UpdateExperienceComponent implements OnInit {
     if(localStorage.getItem("exp")){
       if(this.updateExperienceForm.valid){
         this.experienceService.patchExperience(parseInt(localStorage.getItem("exp")), experience).subscribe((resp: Experience) => {
-          this.dialogRef.close(experience);
+          this.dialogRef.close(resp);
         }, err => {
           console.error(err);
         })
@@ -72,7 +79,7 @@ export class UpdateExperienceComponent implements OnInit {
     }else{
       if(this.updateExperienceForm.valid){
         this.experienceService.createExperience(experience).subscribe((resp: Experience) => {
-          this.dialogRef.close(experience);
+          this.dialogRef.close(resp);
         }, err => {
           console.error(err);
         })
@@ -84,10 +91,9 @@ export class UpdateExperienceComponent implements OnInit {
     let file = event.target.files[0];
     const formdata = new FormData();
     formdata.append('image', file);
-    this.userService.savePhoto(formdata).subscribe(
+    this.imageService.savePhoto(formdata).subscribe(
       (resp: ImageNameDTO) => {    
-        let img = environment.fireImgPath + resp.imgName;
-        this.imgSelected = img;
+        this.imgSelected = resp.imgName;
         this.updateExperienceForm.setValue({
           image: resp.imgName,
           city: this.updateExperienceForm.getRawValue().city, 

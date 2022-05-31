@@ -18,7 +18,7 @@ export class AuthenticateService {
   }
 
   keep(user: UserLogged){
-    localStorage.setItem("currentUser", JSON.stringify(user));
+    localStorage.setItem("token", JSON.stringify(user.token));
   }
 
 }

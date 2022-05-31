@@ -16,6 +16,8 @@ export class EducationsComponent implements OnInit {
 
   title: string
 
+  @Input() showButtons: boolean = false;
+
   constructor(private educationService: EducationService, public dialog: MatDialog) { }
 
   ngOnInit() {

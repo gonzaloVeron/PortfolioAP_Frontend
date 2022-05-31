@@ -1,5 +1,5 @@
 <div class="d-flex">
     <h3 class="mb-3"> {{ title }} </h3>
-    <app-icon-button [icon]="'fa-plus'" style="margin-top: 0.6%; margin-left: 0.6%" (click)="openDialog()"></app-icon-button>
+    <app-icon-button *ngIf="showButtons" [icon]="'fa-plus'" style="margin-top: 0.6%; margin-left: 0.6%" (click)="openDialog()"></app-icon-button>
 </div>
-<app-project *ngFor="let pro of projects" (delete)="deleteProject($event)" [project]="pro"></app-project>
+<app-project *ngFor="let pro of projects" [showButtons]="showButtons" (delete)="deleteProject($event)" [project]="pro"></app-project>

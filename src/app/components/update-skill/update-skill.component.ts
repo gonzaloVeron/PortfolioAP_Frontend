@@ -15,6 +15,8 @@ export class UpdateSkillComponent implements OnInit {
 
   constructor(private dialogRef: MatDialogRef<UpdateSkillComponent>, private formBuilder: FormBuilder, private skillService: SkillService) { }
 
+  buttonTitle: string = "Modificar";
+
   ngOnInit() {
     this.updateSkillForm = this.formBuilder.group({
       name: ['', Validators.required],
@@ -28,6 +30,8 @@ export class UpdateSkillComponent implements OnInit {
           level: resp.level
         });
       });
+    }else{
+      this.buttonTitle = "Agregar";
     }
   }
   

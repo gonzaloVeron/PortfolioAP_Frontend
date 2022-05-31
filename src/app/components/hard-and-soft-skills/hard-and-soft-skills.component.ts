@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Skill } from 'src/app/models/Skill';
 import { SkillService } from 'src/app/services/skill.service';
@@ -12,6 +12,8 @@ import { UpdateSkillComponent } from '../update-skill/update-skill.component';
 export class HardAndSoftSkillsComponent implements OnInit {
 
   skills: Array<Skill>;
+
+  @Input() showButtons: boolean = false;
 
   constructor(private skillService: SkillService, private dialog: MatDialog) { }
 

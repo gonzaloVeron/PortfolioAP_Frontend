@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ImageNameDTO } from 'src/app/models/ImageNameDTO';
+import { User } from 'src/app/models/User';
+import { UserService } from 'src/app/services/user.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-background-img',
@@ -7,9 +11,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BackgroundImgComponent implements OnInit {
 
-  constructor() { }
+  imgPath: string = environment.fireImgPath;
+
+  backgroundImg: string = 'no-images.png';
+
+  @Input() showButtons: boolean = false;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+    this.userService.getUser(environment.user_id).subscribe((resp: User) => {
+      this.backgroundImg = resp.background_img;
+    })
   }
 
+  addDoc(event){
+    let file = event.target.files[0];
+    const formdata = new FormData();
+    formdata.append('image', file);
+    this.userService.saveBackgroundPhoto(formdata).subscribe((resp: ImageNameDTO) => {
+        this.backgroundImg = resp.imgName;
+      }
+    );
+  }
+  
 }

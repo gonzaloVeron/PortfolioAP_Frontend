@@ -1,7 +1,7 @@
 <mat-dialog-content class="mat-typography" style="min-width: 280px">
   <h1 class="text-center"> Datos de educación </h1>
   <div class="d-flex flex-column justify-content-center align-items-center">
-    <img class="image" [src]="imgSelected">
+    <img class="image" [src]="imgPath + imgSelected">
     <input
       type="file"
       id="fileEdu"
@@ -23,5 +23,5 @@
     <input type="number" [ngClass]="['form-control', 'mb-2', controlField('start_year')]" placeholder="Año de inicio" formControlName="start_year">
     <input type="number" [ngClass]="['form-control', 'mb-2', controlField('end_year')]" placeholder="Año de finalización" formControlName="end_year">
   </div>
-  <button class="btn btn-secondary w-100 mb-1" (click)="updateExperience()">Modificar</button>
+  <button class="btn btn-secondary w-100 mb-1" (click)="updateExperience()">{{ buttonTitle }}</button>
 </mat-dialog-content>

@@ -4,17 +4,17 @@
       <img class="navbar-avatar" [src]="apLogo" alt="argentina programa logo">
       <strong style="font-size: large;"> Argentina Programa </strong>
     </div>
-    <div class="col-3 d-flex justify-content-end">
-        <div class="d-flex justify-content-center align-items-center gap-2" style="cursor: pointer;" (click)="openDialog()">
+    <div *ngIf="!logged" class="col-3 d-flex justify-content-end">
+        <div class="d-flex justify-content-center align-items-center gap-2" style="cursor: pointer;" (click)="openLogin()">
           <strong>LogIn</strong>
           <i class="fa-solid fa-right-to-bracket fa-2x"></i>
         </div>
     </div>
-    <!-- <div class="col-3 d-flex justify-content-end">
-      <div class="d-flex justify-content-center align-items-center gap-2" style="cursor: pointer;" (click)="openDialog()">
+    <div *ngIf="logged" class="col-3 d-flex justify-content-end">
+      <div class="d-flex justify-content-center align-items-center gap-2" style="cursor: pointer;" (click)="openLogout()">
         <strong>LogOut</strong>
         <i class="fa-solid fa-right-from-bracket fa-2x"></i>
       </div>
-    </div> -->
+    </div>
   </div>
 </nav>

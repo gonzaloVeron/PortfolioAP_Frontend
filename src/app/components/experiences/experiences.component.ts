@@ -16,6 +16,8 @@ export class ExperiencesComponent implements OnInit {
 
   @Input() title: string
 
+  @Input() showButtons: boolean = false;
+
   constructor(private experienceService: ExperienceService, public dialog: MatDialog) { }
 
   ngOnInit() {

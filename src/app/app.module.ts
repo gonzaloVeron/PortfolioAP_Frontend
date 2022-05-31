@@ -33,6 +33,7 @@ import { UpdateSkillComponent } from './components/update-skill/update-skill.com
 import { UpdateProjectComponent } from './components/update-project/update-project.component';
 import { DeleteElementComponent } from './components/delete-element/delete-element.component';
 import { BackgroundImgComponent } from './components/background-img/background-img.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [	
@@ -59,7 +60,8 @@ import { BackgroundImgComponent } from './components/background-img/background-i
     UpdateSkillComponent,
     UpdateProjectComponent,
     DeleteElementComponent,
-    BackgroundImgComponent
+    BackgroundImgComponent,
+    LogoutComponent
   ],
   imports: [
     CommonModule,

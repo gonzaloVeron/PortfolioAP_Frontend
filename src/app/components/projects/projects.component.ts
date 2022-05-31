@@ -15,6 +15,8 @@ export class ProjectsComponent implements OnInit {
   projects: Array<Project>;
   title: string
 
+  @Input() showButtons: boolean = false;
+  
   constructor(private projectService: ProjectService, public dialog: MatDialog) { }
 
   ngOnInit() {

@@ -4,6 +4,7 @@ import { LoginComponent } from '../login/login.component';
 import { DomSanitizer } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 import { User } from 'src/app/models/User';
+import { LogoutComponent } from '../logout/logout.component';
 
 @Component({
   selector: 'app-navbar',
@@ -12,18 +13,41 @@ import { User } from 'src/app/models/User';
 })
 export class NavbarComponent implements OnInit {
 
-  apLogo: string = environment.fireImgPath + '52736aa8-db61-4f1f-808d-512a4e7d9220';
+  apLogo: string = environment.fireImgPath + 'apLogo.png';
 
-  constructor(public dialog: MatDialog, private domSanitizer: DomSanitizer) { }
+  logged: boolean = false;
+
+  @Output("showButtons") showButtons: EventEmitter<boolean> = new EventEmitter(); 
+
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
+    if(localStorage.getItem('token')){
+      this.logged = true;
+      this.showButtons.emit(true);
+    }
   }
 
-  openDialog() {
+  openLogin() {
     const dialogRef = this.dialog.open(LoginComponent);
 
-    dialogRef.afterClosed().subscribe((user) => {
-      // this.login.emit(user)
+    dialogRef.afterClosed().subscribe((user: User) => {
+      if(user){
+        this.logged = true;
+        this.showButtons.emit(true);
+      }
+    });
+  }
+
+  openLogout(){
+    const dialogRef = this.dialog.open(LogoutComponent);
+
+    dialogRef.afterClosed().subscribe((logout: boolean) => {
+      if(logout){
+        this.logged = false;
+        localStorage.clear();
+        this.showButtons.emit(false);
+      }
     });
   }
 

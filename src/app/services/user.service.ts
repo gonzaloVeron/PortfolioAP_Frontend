@@ -17,8 +17,12 @@ export class UserService {
     return this.apiRestService.get(`/users/${id}`);
   }
 
-  savePhoto(obj: FormData){
-    return this.apiRestService.upload("/users/jwt/img", obj);
+  saveProfilePhoto(obj: FormData){
+    return this.apiRestService.upload("/users/jwt/img/profile", obj);
+  }
+
+  saveBackgroundPhoto(obj: FormData){
+    return this.apiRestService.upload("/users/jwt/img/background", obj);
   }
 
   updateAvatarData(obj: UserDTO){

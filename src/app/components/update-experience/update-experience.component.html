@@ -1,7 +1,7 @@
 <mat-dialog-content class="mat-typography" style="min-width: 280px">
   <h1 class="text-center"> Datos de experiencia de trabajo </h1>
   <div class="d-flex flex-column justify-content-center align-items-center">
-    <img [src]="imgSelected" class="image">
+    <img [src]="imgPath + imgSelected" class="image">
     <input
       type="file"
       id="filee"
@@ -23,5 +23,5 @@
     <input type="date" [ngClass]="['form-control', 'mb-2', controlField('start_date')]" placeholder="b" formControlName="start_date">
     <input type="date" [ngClass]="['form-control', 'mb-2', controlField('end_date')]" placeholder="a" formControlName="end_date">
   </div>
-  <button class="btn btn-secondary w-100 mb-1" (click)="updateExperience()">Modificar</button>
+  <button class="btn btn-secondary w-100 mb-1" (click)="updateExperience()">{{ buttonTitle }}</button>
 </mat-dialog-content>

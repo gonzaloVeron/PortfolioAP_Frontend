@@ -18,6 +18,8 @@ export class ExperienceComponent implements OnInit {
 
   @Output('delete') delete: EventEmitter<number> = new EventEmitter();
 
+  @Input() showButtons: boolean = false;
+
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {

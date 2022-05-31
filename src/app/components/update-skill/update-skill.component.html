@@ -4,5 +4,5 @@
     <input type="text" [ngClass]="['form-control', 'mb-2', controlField('name')]" placeholder="Nombre" formControlName="name">
     <input type="text" [ngClass]="['form-control', 'mb-2', controlField('level')]" placeholder="Nivel de habilidad" formControlName="level">
   </div>
-  <button class="btn btn-secondary w-100 mb-1" (click)="updateSkill()">Modificar</button>
+  <button class="btn btn-secondary w-100 mb-1" (click)="updateSkill()">{{ buttonTitle }}</button>
 </mat-dialog-content>

@@ -2,14 +2,14 @@
   <div style="position: relative;">
     <img class="shadow image" [src]="imgPath + user.profile_img">
     <div style="position: absolute; top: 26px; right: 26px;">
-      <app-upload-button></app-upload-button>
+      <app-upload-button *ngIf="showButtons" (onSetImage)="setImage($event)"></app-upload-button>
     </div>
   </div>
   <div class="d-flex flex-column justify-content-center align-items-center" style="position: relative;">
     <strong class="mt-1" style="font-size: large;"> {{ user.name + " " + user.surname }} </strong>
     <span> {{ user.employment }} </span>
     <div style="position: absolute; top: 26px; right: 26px;">
-      <app-icon-button [icon]="'fa-pen'" style="position: absolute; top: -33px; right: -8px;" (click)="openDialog()"></app-icon-button>
+      <app-icon-button *ngIf="showButtons" [icon]="'fa-pen'" style="position: absolute; top: -33px; right: -8px;" (click)="openDialog()"></app-icon-button>
     </div>
   </div>
 </div>

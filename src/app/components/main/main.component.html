@@ -1,18 +1,18 @@
-<app-navbar></app-navbar>
+<app-navbar (showButtons)="onShowButtons($event)"></app-navbar>
 <div class="main container">
-  <app-background-img></app-background-img>
+  <app-background-img [showButtons]="showButtons"></app-background-img>
   <div class="container-fluid">
     <div class="row" style="position: relative;">
       <div class="col-sm-3">
-        <app-user-avatar class="d-flex justify-content-center align-items-center" style="position: relative; top: -53px"></app-user-avatar>
+        <app-user-avatar [showButtons]="showButtons" class="d-flex justify-content-center align-items-center" style="position: relative; top: -53px"></app-user-avatar>
       </div>
       <div class="col-sm-9">
-        <app-about-me></app-about-me>
+        <app-about-me [showButtons]="showButtons"></app-about-me>
       </div>
     </div>
   </div>
-  <app-experiences></app-experiences>
-  <app-educations></app-educations>
-  <app-hard-and-soft-skills></app-hard-and-soft-skills>
-  <app-projects></app-projects>
+  <app-experiences [showButtons]="showButtons"></app-experiences>
+  <app-educations [showButtons]="showButtons"></app-educations>
+  <app-hard-and-soft-skills [showButtons]="showButtons"></app-hard-and-soft-skills>
+  <app-projects [showButtons]="showButtons"></app-projects>
 </div>

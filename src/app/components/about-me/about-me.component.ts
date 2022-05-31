@@ -16,6 +16,8 @@ export class AboutMeComponent implements OnInit {
 
   content: string;
 
+  @Input() showButtons: boolean = false;
+
   constructor(private userService: UserService, public dialog: MatDialog) { }
 
   ngOnInit() {

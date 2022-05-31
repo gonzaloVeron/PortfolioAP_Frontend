@@ -13,6 +13,8 @@ export class UpdateProjectComponent implements OnInit {
 
   updateProjectForm: FormGroup;
 
+  buttonTitle: string = "Modificar";
+
   constructor(private dialogRef: MatDialogRef<UpdateProjectComponent>, private formBuilder: FormBuilder, private projectService: ProjectService) { }
 
   ngOnInit() {
@@ -30,6 +32,8 @@ export class UpdateProjectComponent implements OnInit {
           url: resp.url
         });
       });
+    }else{
+      this.buttonTitle = "Agregar";
     }
   }
   

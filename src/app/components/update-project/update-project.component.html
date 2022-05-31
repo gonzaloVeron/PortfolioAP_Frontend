@@ -5,5 +5,5 @@
     <input type="text" [ngClass]="['form-control', 'mb-2', controlField('description')]" placeholder="Descripción" formControlName="description">
     <input type="text" [ngClass]="['form-control', 'mb-2', controlField('url')]" placeholder="URL de evidencia" formControlName="url">
   </div>
-  <button class="btn btn-secondary w-100 mb-1" (click)="updateProject()">Modificar</button>
+  <button class="btn btn-secondary w-100 mb-1" (click)="updateProject()">{{ buttonTitle }}</button>
 </mat-dialog-content>

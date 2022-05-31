@@ -13,11 +13,11 @@ export class ApiRestService {
 
   private generateHeader(contentType: any = "application/json") {
     let httpOptions = {};
-    let currentUser = localStorage.getItem("currentUser")
-    if (currentUser) {
+    let token = localStorage.getItem("token")
+    if (token) {
       httpOptions['headers'] = new HttpHeaders({
         "Content-Type": contentType,
-        Authorization: JSON.parse(currentUser).token,
+        Authorization: JSON.parse(token),
       });
     } else {
       httpOptions['headers'] = new HttpHeaders({

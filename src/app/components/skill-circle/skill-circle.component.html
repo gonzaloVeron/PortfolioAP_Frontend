@@ -7,8 +7,8 @@
         <strong class="skill-value">{{ skill.level + "" + "%" }}</strong>
     </div>
     <div class="button-position d-flex flex-column justify-content-around h-100">
-        <app-icon-button [icon]="'fa-pen'" (click)="openDialog()"></app-icon-button>
-        <app-icon-button [icon]="'fa-xmark'" (click)="openDelete()"></app-icon-button>
+        <app-icon-button *ngIf="showButtons" [icon]="'fa-pen'" (click)="openDialog()"></app-icon-button>
+        <app-icon-button *ngIf="showButtons" [icon]="'fa-xmark'" (click)="openDelete()"></app-icon-button>
     </div>
     <strong class="skill-text">{{ skill.name }}</strong>
 </div>

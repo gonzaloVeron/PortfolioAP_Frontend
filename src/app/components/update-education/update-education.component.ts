@@ -4,7 +4,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Education } from 'src/app/models/Education';
 import { ImageNameDTO } from 'src/app/models/ImageNameDTO';
 import { EducationService } from 'src/app/services/education.service';
-import { UserService } from 'src/app/services/user.service';
+import { ImageService } from 'src/app/services/image.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -16,9 +16,13 @@ export class UpdateEducationComponent implements OnInit {
 
   updateEducationForm: FormGroup;
 
-  imgSelected: string = "../../../assets/images/no-images.png";
+  imgPath: string = environment.fireImgPath;
 
-  constructor(private dialogRef: MatDialogRef<UpdateEducationComponent>, private formBuilder: FormBuilder, private educationService: EducationService, private userService: UserService) { }
+  imgSelected: string = "no-images.png";
+
+  buttonTitle: string = "Modificar";
+
+  constructor(private dialogRef: MatDialogRef<UpdateEducationComponent>, private formBuilder: FormBuilder, private educationService: EducationService, private imageService: ImageService) { }
 
   ngOnInit() {
     this.updateEducationForm = this.formBuilder.group({
@@ -42,7 +46,10 @@ export class UpdateEducationComponent implements OnInit {
           start_year: resp.start_year,
           title: resp.title
         });
+        this.imgSelected = resp.image;
       });
+    }else{
+      this.buttonTitle = "Agregar";
     }
   }
   
@@ -53,7 +60,7 @@ export class UpdateEducationComponent implements OnInit {
   updateExperience(){
     this.updateEducationForm.markAllAsTouched();
     let education: Education = new Education(this.updateEducationForm.getRawValue().average, 
-      this.updateEducationForm.getRawValue().carrer, 
+      this.updateEducationForm.getRawValue().career, 
       this.updateEducationForm.getRawValue().end_year, 
       localStorage.getItem("edu") ? parseInt(localStorage.getItem("edu")) : -1, 
       this.updateEducationForm.getRawValue().image, 
@@ -64,7 +71,7 @@ export class UpdateEducationComponent implements OnInit {
     if(localStorage.getItem("edu")){
       if(this.updateEducationForm.valid){
         this.educationService.patchEducation(parseInt(localStorage.getItem("edu")), education).subscribe((resp: Education) => {
-          this.dialogRef.close(education);
+          this.dialogRef.close(resp);
         }, err => {
           console.error(err);
         })
@@ -72,7 +79,7 @@ export class UpdateEducationComponent implements OnInit {
     }else{
       if(this.updateEducationForm.valid){
         this.educationService.createEducation(education).subscribe((resp: Education) => {
-          this.dialogRef.close(education);
+          this.dialogRef.close(resp);
         }, err => {
           console.error(err);
         })
@@ -84,10 +91,9 @@ export class UpdateEducationComponent implements OnInit {
     let file = event.target.files[0];
     const formdata = new FormData();
     formdata.append('image', file);
-    this.userService.savePhoto(formdata).subscribe(
+    this.imageService.savePhoto(formdata).subscribe(
       (resp: ImageNameDTO) => {    
-        let img = environment.fireImgPath + resp.imgName;
-        this.imgSelected = img;
+        this.imgSelected = resp.imgName;
         this.updateEducationForm.setValue({
           image: resp.imgName,
           average: this.updateEducationForm.getRawValue().average,

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { ImageNameDTO } from 'src/app/models/ImageNameDTO';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,6 +11,8 @@ export class UploadButtonComponent implements OnInit {
 
   constructor(private userService: UserService) { }
 
+  @Output() onSetImage: EventEmitter<{imgName: string}> = new EventEmitter();
+
   ngOnInit() {
   }
 
@@ -17,25 +20,10 @@ export class UploadButtonComponent implements OnInit {
     let file = event.target.files[0];
     const formdata = new FormData();
     formdata.append('image', file);
-    // this.buttonLoading = true;
-    // let name = this.form.getRawValue().file_name;
-    // if("isiGonza" != ''){
-      this.userService.savePhoto(formdata)
-     .subscribe(
-        (resp: any) => {    
-          // this.buttonLoading = false;
-          // this.documentsData.data.push(resp.data);
-          // this.form.reset();
-          // file = null;
-          // this.show = false;
-        },
-        (err) => {
-          console.error(err);
-          // this.toastService.error("Error", "No se pudieron guardar los cambios");
-          // this.buttonLoading = false;
-        }
-      );
-    // }
+    this.userService.saveProfilePhoto(formdata).subscribe((resp: ImageNameDTO) => {
+        this.onSetImage.emit(resp);
+      }
+    );
   }
 
 }

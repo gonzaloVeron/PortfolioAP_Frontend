@@ -1,6 +1,16 @@
 <div style="position: relative;">
-  <img class="w-100" src="../../../assets/images/background.jpeg" style="border-radius: 10px;">
-  <div style="position: absolute; top: 7px; right: 10px;">
-    <app-upload-button></app-upload-button>
+  <img class="w-100" [src]="imgPath + backgroundImg" style="border-radius: 10px;">
+  <div *ngIf="showButtons" style="position: absolute; top: 7px; right: 10px;">
+    <input
+      type="file"
+      id="background"
+      (change)="addDoc($event)"
+      value="Añadir Foto"
+    />
+    <div class="d-flex justify-content-center align-items-center upload">
+      <label class="d-flex justify-content-center align-items-center" for="background" style="cursor: pointer;">
+        <i class="fas fa-cloud-arrow-up fa-2x"></i>
+      </label>
+    </div>
   </div>
 </div>

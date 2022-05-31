@@ -16,6 +16,8 @@ export class UserAvatarComponent implements OnInit {
 
   user: User;
   
+  @Input() showButtons: boolean = false;
+
   constructor(public dialog: MatDialog, private userService: UserService) { }
 
   ngOnInit() {
@@ -34,6 +36,11 @@ export class UserAvatarComponent implements OnInit {
         this.user.employment = user.employment;
       }
     });
+  }
+
+  setImage(event){
+    console.log("AAA >", event)
+    this.user.profile_img = event.imgName;
   }
 
 }
