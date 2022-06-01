@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   basePath: 'http://localhost:8080/api/v1',
-  fireImgPath: 'https://storage.cloud.google.com/ap-portfolio-gv.appspot.com/',
+  fireImgPath: 'https://firebasestorage.googleapis.com/v0/b/ap-portfolio-gv.appspot.com/o/',
   imgPath: '../../assets/images/',
   user_id: 1
   // a: "https://ap-portfolio-gv.herokuapp.com/api/v1/users/login"
