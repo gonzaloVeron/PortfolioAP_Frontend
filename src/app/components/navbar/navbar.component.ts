@@ -15,6 +15,8 @@ export class NavbarComponent implements OnInit {
 
   apLogo: string = environment.fireImgPath + 'apLogo.png';
 
+  mediaToken: string = environment.mediaToken;
+
   logged: boolean = false;
 
   @Output("showButtons") showButtons: EventEmitter<boolean> = new EventEmitter(); 

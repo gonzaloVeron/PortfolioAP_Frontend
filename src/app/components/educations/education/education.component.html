@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="row">
         <div *ngIf="education.image" class="col-md-2 col-4 d-flex justify-content-center align-items-center">
-          <img class="image" [src]="imgPath + education.image">
+          <img class="image" [src]="imgPath + education.image + mediaToken">
         </div>
         <div [ngClass]="[(education.image) ? 'col-md-10 col-8' : 'col-md-12 col-12']">
           <div class="d-flex justify-content-between align-items-center" >

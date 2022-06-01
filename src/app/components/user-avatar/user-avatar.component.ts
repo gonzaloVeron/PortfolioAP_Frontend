@@ -14,6 +14,8 @@ export class UserAvatarComponent implements OnInit {
 
   imgPath: string = environment.fireImgPath;
 
+  mediaToken: string = environment.mediaToken;
+
   user: User;
   
   @Input() showButtons: boolean = false;

@@ -11,9 +11,11 @@ import { environment } from 'src/environments/environment';
 })
 export class BackgroundImgComponent implements OnInit {
 
-  imgPath: string = environment.fireImgPath;
-
   backgroundImg: string = 'no-images.png';
+
+  imgPath: string = environment.fireImgPath
+
+  mediaToken: string = environment.mediaToken;
 
   @Input() showButtons: boolean = false;
 

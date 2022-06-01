@@ -1,6 +1,6 @@
 <div *ngIf="user" class="d-flex flex-column justify-content-center align-items-center">
   <div style="position: relative;">
-    <img class="shadow image" [src]="imgPath + user.profile_img">
+    <img class="shadow image" [src]="imgPath + user.profile_img + mediaToken">
     <div style="position: absolute; top: 26px; right: 26px;">
       <app-upload-button *ngIf="showButtons" (onSetImage)="setImage($event)"></app-upload-button>
     </div>

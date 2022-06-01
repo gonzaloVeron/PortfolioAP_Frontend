@@ -18,6 +18,8 @@ export class UpdateEducationComponent implements OnInit {
 
   imgPath: string = environment.fireImgPath;
 
+  mediaToken: string = environment.mediaToken;
+
   imgSelected: string = "no-images.png";
 
   buttonTitle: string = "Modificar";

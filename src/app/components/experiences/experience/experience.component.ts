@@ -13,7 +13,9 @@ import { UpdateExperienceComponent } from '../../update-experience/update-experi
 export class ExperienceComponent implements OnInit {
 
   imgPath: string = environment.fireImgPath;
- 
+
+  mediaToken: string = environment.mediaToken;
+  
   @Input() experience: Experience;
 
   @Output('delete') delete: EventEmitter<number> = new EventEmitter();

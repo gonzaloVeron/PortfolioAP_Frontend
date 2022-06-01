@@ -15,6 +15,8 @@ export class EducationComponent implements OnInit {
 
   imgPath: string = environment.fireImgPath;
 
+  mediaToken: string = environment.mediaToken;
+
   @Output('delete') delete: EventEmitter<number> = new EventEmitter();
 
   @Input() education: Education;
